@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "traders_copilot_mzza_25"
+version = "0.1.0"
+description = "The package is designed to signal traders, and thus helping with streamlining investment decision-making and optimizing trading strategies."
+authors = ["Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version",
+]                                                    # version location
+branch = "main"                                      # branch to make releases of
+changelog_file = "CHANGELOG.md"                      # changelog file
+build_command = "pip install poetry && poetry build" # build dists 
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
