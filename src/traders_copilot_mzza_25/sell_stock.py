@@ -1,4 +1,4 @@
-def sell(account, stock_symbol, quantity, price):
+def sell_stock(account, stock_symbol, quantity, price):
     """Execute a stock sale and update the user's account.
 
     This function processes the sale of a specific quantity of a stock at a given price.
