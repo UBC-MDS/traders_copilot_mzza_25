@@ -18,7 +18,7 @@ traders_copilot_mzza_25 provides functionalities for generating trading signals,
 
 - generate_signals: a function that identify buy/sell signals based on price trends.
 - plot_signals: function that visualizes the timestamp and input values.
-- fetch_market_data: a function that fetches market data from the internet.
+- simulate_market_data: a function that simulate stock market data.
 - buy_stock: a function that buy stock and update user account.
 - sell_stock: a function that sells stock and update user account.
 
