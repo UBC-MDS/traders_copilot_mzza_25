@@ -1,4 +1,4 @@
-def sell_stock(account, stock_symbol, quantity, price):
+def sell_stock(account, quantity, price):
     """Execute a stock sale and update the user's account.
 
     This function processes the sale of a specific quantity of a stock at a given price.
@@ -10,9 +10,7 @@ def sell_stock(account, stock_symbol, quantity, price):
     account : dict
         A dictionary representing the user's account. Expected keys include:
         - 'balance': float, the current cash balance in the account.
-        - 'stocks': dict, mapping stock symbols to the number of shares held.
-    stock_symbol : str
-        The symbol of the stock being sold (e.g., 'AAPL', 'GOOG').
+        - 'stocks': int, the number of shares held.
     quantity : int
         The number of shares to sell. Must not exceed the number of shares currently held.
     price : float
@@ -30,10 +28,4 @@ def sell_stock(account, stock_symbol, quantity, price):
 
     Examples
     --------
-    >>> account = {'balance': 1000.0, 'stocks': {'AAPL': 10}}
-    >>> sell(account, 'AAPL', 5, 150.0)
-    {'balance': 1750.0, 'stocks': {'AAPL': 5}}
-
-    >>> sell(account, 'AAPL', 10, 150.0)
-    ValueError: Not enough shares to sell.
     """
