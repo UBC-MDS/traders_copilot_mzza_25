@@ -9,7 +9,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.11"
 pytest = ">=8.3.4"
-yfinance = ">=0.2.51"
+pandas = ">=2.2.3"
+numpy = ">=2.2.1"
+
 
 [tool.semantic_release]
 version_toml = [
