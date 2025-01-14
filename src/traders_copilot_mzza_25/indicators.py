@@ -10,8 +10,8 @@ def calculate_sma(data, window=50):
     Returns:
         pd.DataFrame: DataFrame with an additional column for the SMA.
     """
-    data[f'SMA_{window}'] = stock_data['Close'].rolling(window=window).mean()
-    return stock_data
+    data[f'SMA_{window}'] = data['Close'].rolling(window=window).mean()
+    return data
 
 #Relative Strength Index (RSI)
 def calculate_rsi(data, window=14):
@@ -25,9 +25,17 @@ def calculate_rsi(data, window=14):
     Returns:
         pd.DataFrame: DataFrame with an additional column for RSI.
     """
-    delta = data['Close'].diff() #price difference
-    gain = (delta.where(delta > 0, 0)).rolling(window).mean()
-    loss = (-delta.where(delta < 0, 0)).rolling(window).mean()
-    rs = gain / loss
+    delta = data['Close'].diff()
+    
+    # Separate gains and losses
+    gain = (delta.where(delta > 0, 0)).fillna(0)
+    loss = (-delta.where(delta < 0, 0)).fillna(0)
+    
+    avg_gain = gain.rolling(window=window).mean()
+    avg_loss = loss.rolling(window=window).mean()
+    rs = avg_gain / avg_loss
+    
+    # Calculate the RSI
     data['RSI'] = 100 - (100 / (1 + rs))
+    
     return data
