@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 #Simple Moving Average (SMA)
 def calculate_sma(data, window=50):
     """
