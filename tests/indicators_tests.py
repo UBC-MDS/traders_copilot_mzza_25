@@ -1,7 +1,7 @@
 import pytest
 import pandas as pd
 import numpy as np
-\import sys
+import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 from traders_copilot_mzza_25.indicators import calculate_sma, calculate_rsi
