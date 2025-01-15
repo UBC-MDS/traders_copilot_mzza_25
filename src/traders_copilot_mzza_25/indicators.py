@@ -20,14 +20,16 @@ def calculate_sma(data, window=50, fillna=False):
     if 'Close' not in data.columns:
         raise ValueError("The input DataFrame must contain a 'Close' column.")
     
-    # Calculate the rolling mean (SMA)
+    if data.empty:
+        return data
+    
     data[f'SMA_{window}'] = data['Close'].rolling(window=window).mean()
     
-    # Handle NaNs 
     if fillna:
         data[f'SMA_{window}'] = data[f'SMA_{window}'].bfill()  
     
     return data
+
 
 #RSI 
 def calculate_rsi(data, window=14, fillna=False):
@@ -48,6 +50,10 @@ def calculate_rsi(data, window=14, fillna=False):
     if 'Close' not in data.columns:
         raise ValueError("The input DataFrame must contain a 'Close' column.")
     
+    # Handle empty data
+    if data.empty:
+        return data
+    
     delta = data['Close'].diff()
     
     # Separate gains and losses
@@ -58,10 +64,8 @@ def calculate_rsi(data, window=14, fillna=False):
     avg_loss = loss.rolling(window=window).mean()
     rs = avg_gain / avg_loss
     
-    # Calculate the RSI
     data['RSI'] = 100 - (100 / (1 + rs))
     
-    # Handle NaNs 
     if fillna:
         data['RSI'] = data['RSI'].bfill()  
     
