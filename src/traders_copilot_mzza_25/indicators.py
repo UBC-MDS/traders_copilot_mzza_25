@@ -25,7 +25,7 @@ def calculate_sma(data, window=50, fillna=False):
     
     # Handle NaNs 
     if fillna:
-        data[f'SMA_{window}'].fillna(method='bfill', inplace=True)  
+        data[f'SMA_{window}'] = data[f'SMA_{window}'].bfill()  
     
     return data
 
@@ -63,6 +63,6 @@ def calculate_rsi(data, window=14, fillna=False):
     
     # Handle NaNs 
     if fillna:
-        data['RSI'].fillna(method='bfill', inplace=True)  
+        data['RSI'] = data['RSI'].bfill()  
     
     return data
