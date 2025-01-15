@@ -1,14 +1,15 @@
 import pandas as pd
 import numpy as np
 
-#Simple Moving Average (SMA)
-def calculate_sma(data, window=50):
+#SMA
+def calculate_sma(data, window=50, fillna=False):
     """
     Calculate the Simple Moving Average (SMA) for the given data.
 
     Args:
         data (pd.DataFrame): DataFrame containing stock price data with a 'Close' column.
         window (int): The number of periods to calculate the SMA (default is 50).
+        fillna (bool): Whether to fill NaN values (default is False).
 
     Returns:
         pd.DataFrame: DataFrame with an additional column for the SMA.
@@ -19,21 +20,24 @@ def calculate_sma(data, window=50):
     if 'Close' not in data.columns:
         raise ValueError("The input DataFrame must contain a 'Close' column.")
     
+    # Calculate the rolling mean (SMA)
     data[f'SMA_{window}'] = data['Close'].rolling(window=window).mean()
     
+    # Handle NaNs 
     if fillna:
-        data[f'SMA_{window}'].fillna(method='bfill', inplace=True)
-        
+        data[f'SMA_{window}'].fillna(method='bfill', inplace=True)  
+    
     return data
 
-#Relative Strength Index (RSI)
-def calculate_rsi(data, window=14):
+#RSI 
+def calculate_rsi(data, window=14, fillna=False):
     """
-    Calculate the Relative Strength Index (RSI) measuring measures the speed and change of price movements.
+    Calculate the Relative Strength Index (RSI) measuring the speed and change of price movements.
 
     Args:
         data (pd.DataFrame): DataFrame containing stock price data with a 'Close' column.
         window (int): Number of periods for RSI calculation (default is 14).
+        fillna (bool): Whether to fill NaN values (default is False).
 
     Returns:
         pd.DataFrame: DataFrame with an additional column for RSI.
@@ -43,6 +47,7 @@ def calculate_rsi(data, window=14):
     
     if 'Close' not in data.columns:
         raise ValueError("The input DataFrame must contain a 'Close' column.")
+    
     delta = data['Close'].diff()
     
     # Separate gains and losses
@@ -56,6 +61,7 @@ def calculate_rsi(data, window=14):
     # Calculate the RSI
     data['RSI'] = 100 - (100 / (1 + rs))
     
+    # Handle NaNs 
     if fillna:
         data['RSI'].fillna(method='bfill', inplace=True)  
     
