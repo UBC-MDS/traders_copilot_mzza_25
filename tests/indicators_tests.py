@@ -7,9 +7,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../src/traders_copilot_
 from indicators import calculate_sma, calculate_rsi
 # Test class for calculate_sma and calculate_rsi
 class TestIndicators:
-    
+
     def setup_method(self):
-        """Set up test data for the test cases."""
+        """Set up test data."""
         self.data = pd.DataFrame({
             'Close': [100, 102, 104, 106, 108, 110, 112, 114, 116, 118]
         })
@@ -25,6 +25,7 @@ class TestIndicators:
         result = calculate_sma(self.data, window=3, fillna=False)
         
         assert result['SMA_3'].iloc[:2].isna().all(), "NaNs should exist in the first few rows."
+        assert not result['SMA_3'].iloc[2:].isna().any(), "NaNs should not be present after the initial rows."
 
     def test_rsi_with_nan_handling(self):
         """Test RSI with NaN handling (forward fill, backward fill, or leave NaNs)."""
@@ -37,6 +38,7 @@ class TestIndicators:
         result = calculate_rsi(self.data, window=3, fillna=False)
         
         assert result['RSI'].iloc[:2].isna().all(), "NaNs should exist in the first few rows."
+        assert not result['RSI'].iloc[2:].isna().any(), "NaNs should not be present after the initial rows."
 
     def test_sma_invalid_window(self):
         """Test SMA with an invalid window size (should raise ValueError)."""
@@ -45,7 +47,7 @@ class TestIndicators:
         
         with pytest.raises(ValueError):
             calculate_sma(self.data, window="string")
-     
+    
     def test_rsi_invalid_window(self):
         """Test RSI with an invalid window size (should raise ValueError)."""
         with pytest.raises(ValueError):
