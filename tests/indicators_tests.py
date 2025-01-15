@@ -1,8 +1,10 @@
 import pytest
 import pandas as pd
 import numpy as np
-from indicators import calculate_sma, calculate_rsi
-
+\import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+from traders_copilot_mzza_25.indicators import calculate_sma, calculate_rsi
 # Test class for calculate_sma and calculate_rsi
 class TestIndicators:
     
