@@ -13,7 +13,17 @@ def calculate_sma(data, window=50):
     Returns:
         pd.DataFrame: DataFrame with an additional column for the SMA.
     """
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The input data must be a pandas DataFrame.")
+    
+    if 'Close' not in data.columns:
+        raise ValueError("The input DataFrame must contain a 'Close' column.")
+    
     data[f'SMA_{window}'] = data['Close'].rolling(window=window).mean()
+    
+    if fillna:
+        data[f'SMA_{window}'].fillna(method='bfill', inplace=True)
+        
     return data
 
 #Relative Strength Index (RSI)
@@ -28,6 +38,11 @@ def calculate_rsi(data, window=14):
     Returns:
         pd.DataFrame: DataFrame with an additional column for RSI.
     """
+    if not isinstance(data, pd.DataFrame):
+        raise TypeError("The input data must be a pandas DataFrame.")
+    
+    if 'Close' not in data.columns:
+        raise ValueError("The input DataFrame must contain a 'Close' column.")
     delta = data['Close'].diff()
     
     # Separate gains and losses
@@ -40,5 +55,8 @@ def calculate_rsi(data, window=14):
     
     # Calculate the RSI
     data['RSI'] = 100 - (100 / (1 + rs))
+    
+    if fillna:
+        data['RSI'].fillna(method='bfill', inplace=True)  
     
     return data
