@@ -19,8 +19,8 @@ traders_copilot_mzza_25 provides functionalities for generating trading signals,
 - generate_signals: a function that identify buy/sell signals based on price trends.
 - plot_signals: function that visualizes the timestamp and input values.
 - simulate_market_data: a function that simulate stock market data.
-- buy_stock: a function that buy stock and update user account.
-- sell_stock: a function that sells stock and update user account.
+- calculate_sma: a function in the **`indicators.py`** file that calculates the Simple Moving Average (SMA) 
+- calculate_rsi: a function in the **`indicators.py`** file that calculates the Relative Strength Index (RSI) 
 
 ## Features
 
