@@ -44,4 +44,4 @@ def generate_synthetic_data(start_date, end_date, num_records=252, seed=524):
     
     data.set_index("Date", inplace=True)
     
-    return stock_data
+    return data
