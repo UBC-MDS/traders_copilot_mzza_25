@@ -1,15 +1,3 @@
-"""
-Unit tests for the plot_signals module.
-
-This test suite verifies the correctness of the helper functions and the main 
-plot_signals function from the `plot_signals` module. It includes tests for:
-- Length validation of input lists.
-- Non-empty validation for inputs.
-- Date format validation.
-- Plot generation functionality.
-- Integration of all validations in the plot_signals function.
-"""
-
 import pytest
 from datetime import datetime
 import sys
