@@ -9,7 +9,7 @@ Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi
 ## Installation
 
 ```bash
-$ pip install traders_copilot_mzza_25
+$pip install traders_copilot_mzza_25
 ```
 
 ## Usage
