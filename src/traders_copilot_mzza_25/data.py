@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-def generate_synthetic_data(start_date, end_date, num_records=252, seed=524):
+def generate_synthetic_data(start_date, end_date, num_records=252, seed=40):
     """
     Generate synthetic stock data.
 
