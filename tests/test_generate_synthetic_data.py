@@ -31,7 +31,7 @@ def test_data_types():
 def test_date_format():
     """Test that the function raises an error for invalid date formats."""
     with pytest.raises(ValueError, match="Invalid date format"):
-        generate_synthetic_data("2022/01/01", "2022-12-31")  
+        generate_synthetic_data("2022/01/01", "2022-12-31")
 
     with pytest.raises(ValueError, match="Invalid date format"):
         generate_synthetic_data("01-01-2022", "12-31-2022")
