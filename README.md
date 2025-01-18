@@ -1,6 +1,7 @@
 # traders_copilot_mzza_25
 
-The package is designed to signal traders, and thus helping with streamlining investment decision-making and optimizing trading strategies.
+This package is a streamlined application designed to assist in investment decision-making. It provides trading signals for stock markets by leveraging two key technical indicators: Simple Moving Average (SMA), which smooths price data to identify trends, and Relative Strength Index (RSI), which measures the speed and magnitude of price movements to determine overbought or oversold conditions.
+
 
 ## Contributors
 
@@ -35,14 +36,12 @@ RSI < 30 (stock is oversold)
 SMA_50 < SMA_200 (long-term trend is stronger)
 RSI > 70 (stock is overbought)
 
-- plot_signals: function that visualizes the timestamp with buy/sell signals.
-
+- plot_signals: function that visualizes the timestamp of the stock with the buy/sell signals.
 
 ## Features
 
 traders_copilot_mzza_25 package is a specialized tool for traders and investors fitting into a Python ecosystem of a similar vein. The package augments the existing trading and financial analysis packages like TA-Lib, Backtrader, and PyAlgoTrade by combining trading signal generation, strategy optimization, and built-in visualization tools into one place for a comprehensive trading workflow.
 
--
 
 ## Contributing
 
