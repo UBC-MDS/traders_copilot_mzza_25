@@ -1,79 +1,58 @@
 import pytest
+import pandas as pd
 from datetime import datetime
-import sys
-import os
+from plot_signals import plot_signals, validate_lengths, validate_non_empty, validate_dates, generate_plot, validate_columns
 
-# Add the source path to the system path
-sys.path.append(os.path.join(os.path.dirname(__file__), '../src/traders_copilot_mzza_25'))
-from plot_signals import plot_signals, validate_lengths, validate_non_empty, validate_dates, generate_plot
+@pytest.fixture
+def sample_data():
+    """Provide sample DataFrame for testing."""
+    return pd.DataFrame({
+        "Date": ["2023-01-01", "2023-01-02", "2023-01-03"],
+        "Close": [100, 102, 104]
+    })
 
-def test_validate_lengths():
-    """
-    Test the validate_lengths function to ensure input lists have matching lengths.
+def test_validate_columns(sample_data):
+    """Test that the DataFrame contains required columns."""
+    validate_columns(sample_data, "Close", "Date")
+    with pytest.raises(ValueError, match="The DataFrame must contain 'Price' and 'Date' columns."):
+        validate_columns(sample_data, "Price", "Date")
 
-    Validates that:
-    - Lists of the same length pass without errors.
-    - Lists of different lengths raise a ValueError.
-    """
-    validate_lengths([100, 102, 104], ["2023-01-01", "2023-01-02", "2023-01-03"])
-    with pytest.raises(ValueError, match="The lengths of 'price' and 'time' must match."):
-        validate_lengths([100, 102], ["2023-01-01", "2023-01-02", "2023-01-03"])
+def test_validate_lengths(sample_data):
+    """Test that price and time columns have matching lengths."""
+    # Valid lengths should pass
+    validate_lengths(sample_data, "Close", "Date")
 
-def test_validate_non_empty():
-    """
-    Test the validate_non_empty function to ensure input lists are not empty.
+    # Create mismatched lengths by dropping rows from one column
+    mismatched_data = sample_data.copy()
+    mismatched_data.loc[1, "Date"] = None  # Introduce a missing value in 'Date'
 
-    Validates that:
-    - Non-empty lists pass without errors.
-    - Empty lists raise a ValueError.
-    """
-    validate_non_empty([100, 102, 104], ["2023-01-01", "2023-01-02", "2023-01-03"])
-    with pytest.raises(ValueError, match="Both 'price' and 'time' must be non-empty lists."):
-        validate_non_empty([], [])
+    # Expect a ValueError due to mismatched lengths
+    with pytest.raises(ValueError, match="The lengths of 'price' and 'time' columns must match."):
+        validate_lengths(mismatched_data, "Close", "Date")
 
-def test_validate_dates():
-    """
-    Test the validate_dates function to ensure all dates are in 'YYYY-MM-DD' format.
+def test_validate_non_empty(sample_data):
+    """Test that price and time columns are non-empty."""
+    validate_non_empty(sample_data, "Close", "Date")
+    with pytest.raises(ValueError, match="Both 'price' and 'time' columns must be non-empty."):
+        validate_non_empty(pd.DataFrame({"Date": [], "Close": []}), "Close", "Date")
 
-    Validates that:
-    - Properly formatted date strings pass without errors.
-    - Improperly formatted date strings raise a ValueError.
-    """
-    validate_dates(["2023-01-01", "2023-01-02", "2023-01-03"])
-    with pytest.raises(ValueError, match="Ensure all date strings are in 'YYYY-MM-DD' format."):
-        validate_dates(["2023-01-01", "2023-01-32", "2023-01-03"])
+def test_validate_dates(sample_data):
+    """Test that all dates are in 'YYYY-MM-DD' format."""
+    validate_dates(sample_data, "Date")
+    with pytest.raises(ValueError, match="Ensure all dates in 'Date' are in 'YYYY-MM-DD' format."):
+        invalid_data = sample_data.copy()
+        invalid_data.loc[1, "Date"] = "2023-01-32"
+        validate_dates(invalid_data, "Date")
 
-def test_generate_plot():
-    """
-    Test the generate_plot function to ensure it returns a Matplotlib figure.
-
-    Validates that:
-    - A valid price and time list generates a non-null figure object.
-    """
-    fig = generate_plot([100, 102, 104], ["2023-01-01", "2023-01-02", "2023-01-03"])
+def test_generate_plot(sample_data):
+    """Test that generate_plot returns a Matplotlib figure."""
+    fig = generate_plot(sample_data["Close"], sample_data["Date"])
     assert fig is not None, "The function should return a Matplotlib figure."
 
-def test_plot_signals():
-    """
-    Test the plot_signals function for end-to-end functionality.
-
-    Validates that:
-    - Valid inputs produce a Matplotlib figure.
-    - Mismatched list lengths raise a ValueError.
-    - Empty lists raise a ValueError.
-    - Invalid date formats raise a ValueError.
-    """
-    price = [100, 102, 104]
-    time = ["2023-01-01", "2023-01-02", "2023-01-03"]
-    fig = plot_signals(price, time)
+def test_plot_signals(sample_data):
+    """Test the end-to-end plot_signals function."""
+    fig = plot_signals(sample_data)
     assert fig is not None, "The function should return a Matplotlib figure."
 
-    with pytest.raises(ValueError, match="The lengths of 'price' and 'time' must match."):
-        plot_signals([100, 102], ["2023-01-01", "2023-01-02", "2023-01-03"])
-
-    with pytest.raises(ValueError, match="Both 'price' and 'time' must be non-empty lists."):
-        plot_signals([], [])
-
-    with pytest.raises(ValueError, match="Ensure all date strings are in 'YYYY-MM-DD' format."):
-        plot_signals([100, 102, 104], ["2023-01-01", "2023-01-32", "2023-01-03"])
-        
+    with pytest.raises(ValueError, match="The DataFrame must contain 'Price' and 'Date' columns."):
+        plot_signals(sample_data, price_col="Price")

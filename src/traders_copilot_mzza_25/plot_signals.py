@@ -1,23 +1,33 @@
 from datetime import datetime
 import matplotlib.pyplot as plt
+import pandas as pd
 
-def validate_lengths(price, time):
-    """Ensure the lengths of the price and time lists match."""
-    if len(price) != len(time):
-        raise ValueError("The lengths of 'price' and 'time' must match.")
+def validate_columns(data, price_col, time_col):
+    """Ensure the DataFrame contains the specified price and time columns."""
+    if price_col not in data.columns or time_col not in data.columns:
+        raise ValueError(f"The DataFrame must contain '{price_col}' and '{time_col}' columns.")
 
-def validate_non_empty(price, time):
-    """Ensure both price and time are non-empty."""
-    if not price or not time:
-        raise ValueError("Both 'price' and 'time' must be non-empty lists.")
+def validate_lengths(data, price_col, time_col):
+    """Ensure the lengths of the price and time columns match."""
+    # Count non-missing values in each column
+    price_len = data[price_col].notna().sum()
+    time_len = data[time_col].notna().sum()
+    print(f"Debug: Non-missing Length of {price_col} = {price_len}, Non-missing Length of {time_col} = {time_len}")
+    if price_len != time_len:
+        raise ValueError("The lengths of 'price' and 'time' columns must match.")
 
-def validate_dates(time):
-    """Validate that each time string is in the 'YYYY-MM-DD' format."""
-    for date in time:
+def validate_non_empty(data, price_col, time_col):
+    """Ensure both price and time columns are non-empty."""
+    if data[price_col].empty or data[time_col].empty:
+        raise ValueError("Both 'price' and 'time' columns must be non-empty.")
+
+def validate_dates(data, time_col):
+    """Validate that each date in the time column is in the 'YYYY-MM-DD' format."""
+    for date in data[time_col]:
         try:
-            datetime.strptime(date, "%Y-%m-%d")
+            datetime.strptime(str(date), "%Y-%m-%d")
         except ValueError:
-            raise ValueError("Ensure all date strings are in 'YYYY-MM-DD' format.")
+            raise ValueError(f"Ensure all dates in '{time_col}' are in 'YYYY-MM-DD' format.")
 
 def generate_plot(price, time):
     """Generate a Matplotlib figure for the price vs. time data."""
@@ -29,16 +39,18 @@ def generate_plot(price, time):
     plt.xticks(rotation=45)
     return fig
 
-def plot_signals(price, time):
+def plot_signals(data, price_col="Close", time_col="Date"):
     """
-    Plot a time series depicting the price at specific timestamps.
+    Plot a time series depicting the price at specific timestamps from a DataFrame.
     
     Parameters
     ----------
-    price : list of float
-        A list of price values.
-    time : list of str
-        A list of timestamps corresponding to the price values, formatted as 'YYYY-MM-DD'.
+    data : pandas.DataFrame
+        The input DataFrame containing price and time data.
+    price_col : str, optional
+        The column name for price data (default is "Close").
+    time_col : str, optional
+        The column name for time data (default is "Date").
     
     Returns
     -------
@@ -48,19 +60,20 @@ def plot_signals(price, time):
     Raises
     ------
     ValueError
-        If the lengths of 'price' and 'time' do not match.
-        If 'price' or 'time' is an empty list.
-        If any date in 'time' is not in the 'YYYY-MM-DD' format.
+        If the DataFrame does not contain the specified columns.
+        If the lengths of the columns do not match.
+        If the columns are empty.
+        If any date in the time column is not in the 'YYYY-MM-DD' format.
     
     Examples
     --------
-    >>> price = [100, 102, 104]
-    >>> time = ["2023-01-01", "2023-01-02", "2023-01-03"]
-    >>> fig = plot_signals(price, time)
+    >>> data = pd.DataFrame({"Date": ["2023-01-01", "2023-01-02", "2023-01-03"], 
+    ...                      "Close": [100, 102, 104]})
+    >>> fig = plot_signals(data)
     >>> fig.show()
     """
-    validate_lengths(price, time)
-    validate_non_empty(price, time)
-    validate_dates(time)
-    return generate_plot(price, time)
-    
+    validate_columns(data, price_col, time_col)
+    validate_lengths(data, price_col, time_col)
+    validate_non_empty(data, price_col, time_col)
+    validate_dates(data, time_col)
+    return generate_plot(data[price_col], data[time_col])
