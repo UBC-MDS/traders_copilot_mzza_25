@@ -1,6 +1,7 @@
 # traders_copilot_mzza_25
 
-The package is designed to signal traders, and thus helping with streamlining investment decision-making and optimizing trading strategies.
+This package is a streamlined application designed to assist in investment decision-making. It provides trading signals for stock markets by leveraging two key technical indicators: Simple Moving Average (SMA), which smooths price data to identify trends, and Relative Strength Index (RSI), which measures the speed and magnitude of price movements to determine overbought or oversold conditions.
+
 
 ## Contributors
 
@@ -8,25 +9,39 @@ Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi
 
 ## Installation
 
-```bash
-$pip install traders_copilot_mzza_25
-```
+1. Clone the Repository
+git clone https://github.com/UBC-MDS/traders_copilot_mzza_25.git
+cd traders_copilot_mzza_25
+
+2. Install the Package:
+$ pip install traders_copilot_mzza_25
+
 
 ## Usage
 
-traders_copilot_mzza_25 provides functionalities for generating trading signals, visualizing trading data, and optimizing strategies. Here are the key functions in this package:
+traders_copilot_mzza_25 provides functionalities for generating trading signals and visualizing trading data. Here are the key functions in this package:
 
-- generate_signals: a function that identify buy/sell signals based on price trends.
-- plot_signals: function that visualizes the timestamp and input values.
 - simulate_market_data: a function that simulate stock market data.
-- buy_stock: a function that buy stock and update user account.
-- sell_stock: a function that sells stock and update user account.
+  
+Technical Indicators:
+Simple Moving Averages (SMA)
+Relative Strength Index (RSI)
+
+- generate_signals: a function that identify buy/sell signals based on SMA and RSI thresholds:
+  > Buy Signal:
+SMA_50 > SMA_200 (short-term trend is stronger)
+RSI < 30 (stock is oversold)
+
+> Sell Signal:
+SMA_50 < SMA_200 (long-term trend is stronger)
+RSI > 70 (stock is overbought)
+
+- plot_signals: function that visualizes the timestamp of the stock with the buy/sell signals.
 
 ## Features
 
 traders_copilot_mzza_25 package is a specialized tool for traders and investors fitting into a Python ecosystem of a similar vein. The package augments the existing trading and financial analysis packages like TA-Lib, Backtrader, and PyAlgoTrade by combining trading signal generation, strategy optimization, and built-in visualization tools into one place for a comprehensive trading workflow.
 
-- TODO (continues)
 
 ## Contributing
 
