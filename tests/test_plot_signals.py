@@ -1,6 +1,9 @@
 import pytest
 import pandas as pd
 from datetime import datetime
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../src/traders_copilot_mzza_25'))
 from plot_signals import plot_signals, validate_lengths, validate_non_empty, validate_dates, generate_plot, validate_columns
 
 @pytest.fixture
