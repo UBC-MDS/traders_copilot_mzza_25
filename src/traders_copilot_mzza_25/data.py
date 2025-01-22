@@ -3,18 +3,25 @@ import numpy as np
 from datetime import datetime
 
 def generate_synthetic_data(start_date, end_date, num_records=252, seed=40):
-    """
-    Generate synthetic stock data.
+    """Generate synthetic stock data.
 
-    Args:
+    Parameters
+    ----------
         start_date (str): Start date in YYYY-MM-DD format.
         end_date (str): End date in YYYY-MM-DD format.
         num_records (int): Number of records to generate 
                           (default is 252 trading days in a year in major stock markets).
         seed (int): Random seed for reproducibility.
 
-    Returns:
-        pandas.DataFrame
+    Returns
+    -------
+        pd.DataFrame: A DataFrame containing the generated stock data with 'Date', 'Open', 'High', 'Low', 
+                      'Close', 'Adj Close', and 'Volume' columns.
+
+    Examples
+    --------
+    >>> data = generate_synthetic_data("2021-01-01", "2021-12-31", num_records=252, seed=40)
+    >>> print(data.head())
     """
     
     try:

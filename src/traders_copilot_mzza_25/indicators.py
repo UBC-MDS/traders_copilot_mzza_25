@@ -3,16 +3,27 @@ import numpy as np
 
 #SMA
 def calculate_sma(data, window=50, fillna=False):
-    """
-    Calculate the Simple Moving Average (SMA) for the given data.
+    """Calculate the Simple Moving Average (SMA) for the given data.
 
-    Args:
-        data (pd.DataFrame): DataFrame containing stock price data with a 'Close' column.
-        window (int): The number of periods to calculate the SMA (default is 50).
-        fillna (bool): Whether to fill NaN values (default is False).
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        DataFrame containing stock price data with a 'Close' column.
+    window : int, optional
+        The number of periods to calculate the SMA (default is 50).
+    fillna : bool, optional
+        Whether to fill NaN values (default is False).
 
-    Returns:
-        pd.DataFrame: DataFrame with an additional column for the SMA.
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with an additional column for the SMA.
+
+    Examples
+    --------
+    >>> data = pd.DataFrame({'Close': [100, 102, 104, 106, 108]})
+    >>> result = calculate_sma(data, window=3)
+    >>> print(result['SMA_3'])
     """
     if not isinstance(data, pd.DataFrame):
         raise TypeError("The input data must be a pandas DataFrame.")
@@ -33,17 +44,29 @@ def calculate_sma(data, window=50, fillna=False):
 
 #RSI 
 def calculate_rsi(data, window=14, fillna=False):
-    """
-    Calculate the Relative Strength Index (RSI) measuring the speed and change of price movements.
+    """Calculate the Relative Strength Index (RSI) measuring the speed and change of price movements.
 
-    Args:
-        data (pd.DataFrame): DataFrame containing stock price data with a 'Close' column.
-        window (int): Number of periods for RSI calculation (default is 14).
-        fillna (bool): Whether to fill NaN values (default is False).
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        DataFrame containing stock price data with a 'Close' column.
+    window : int, optional
+        Number of periods for RSI calculation (default is 14).
+    fillna : bool, optional
+        Whether to fill NaN values (default is False).
 
-    Returns:
-        pd.DataFrame: DataFrame with an additional column for RSI.
+    Returns
+    -------
+    pandas.DataFrame
+        DataFrame with an additional column for RSI.
+    
+    Examples
+    --------
+    >>> data = pd.DataFrame({'Close': [100, 102, 104, 106, 108]})
+    >>> result = calculate_rsi(data, window=3)
+    >>> print(result['RSI'])
     """
+        
     if not isinstance(data, pd.DataFrame):
         raise TypeError("The input data must be a pandas DataFrame.")
     
