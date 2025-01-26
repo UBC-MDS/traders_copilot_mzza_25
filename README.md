@@ -14,6 +14,23 @@ Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi
 
 2.  Install the Package: \$ pip install traders_copilot_mzza_25
 
+## Features
+
+traders_copilot_mzza_25 package is a specialized tool for traders and investors fitting into a Python ecosystem of a similar vein. The package augments the existing trading and financial analysis packages like TA-Lib, Backtrader, and PyAlgoTrade by combining trading signal generation, strategy optimization, and built-in visualization tools into one place for a comprehensive trading workflow.
+
+-   **simulate_market_data:** Simulates stock market data for analysis and testing.
+-   **Technical Indicators:** Implements:
+    -   Simple Moving Average (SMA): Smooths price data to identify trends.
+    -   Relative Strength Index (RSI): Measures the speed and magnitude of price movements to assess overbought/oversold conditions.
+-   **generate_signals:** Identifies buy/sell signals based on SMA and RSI thresholds:
+    -   **Buy Signal:**
+        -   SMA_50 \> SMA_200 (short-term trend is stronger)
+        -   RSI \< 30 (stock is oversold)
+    -   **Sell Signal:**
+        -   SMA_50 \< SMA_200 (long-term trend is stronger)
+        -   RSI \> 70 (stock is overbought)
+-   **plot_signals:** Visualizes stock data with buy/sell signals marked on the chart.
+
 ## Usage
 
 `traders_copilot_mzza_25` can be used to simulate market data, generate trading signals, and visualize results. Here are examples of usage:
@@ -65,23 +82,6 @@ data = pd.DataFrame({"Date": ["2023-01-01", "2023-01-02", "2023-01-03"],
 fig = plot_signals(data)
 fig.show()
 ```
-
-## Features
-
-traders_copilot_mzza_25 package is a specialized tool for traders and investors fitting into a Python ecosystem of a similar vein. The package augments the existing trading and financial analysis packages like TA-Lib, Backtrader, and PyAlgoTrade by combining trading signal generation, strategy optimization, and built-in visualization tools into one place for a comprehensive trading workflow.
-
--   **simulate_market_data:** Simulates stock market data for analysis and testing.
--   **Technical Indicators:** Implements:
-    -   Simple Moving Average (SMA): Smooths price data to identify trends.
-    -   Relative Strength Index (RSI): Measures the speed and magnitude of price movements to assess overbought/oversold conditions.
--   **generate_signals:** Identifies buy/sell signals based on SMA and RSI thresholds:
-    -   **Buy Signal:**
-        -   SMA_50 \> SMA_200 (short-term trend is stronger)
-        -   RSI \< 30 (stock is oversold)
-    -   **Sell Signal:**
-        -   SMA_50 \< SMA_200 (long-term trend is stronger)
-        -   RSI \> 70 (stock is overbought)
--   **plot_signals:** Visualizes stock data with buy/sell signals marked on the chart.
 
 ## Contributing
 
