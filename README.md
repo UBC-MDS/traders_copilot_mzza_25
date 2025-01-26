@@ -23,9 +23,8 @@ Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi
 ``` python
 from traders_copilot_mzza_25 import simulate_market_data
 
-# Simulate stock market data
-synthetic_data = simulate_market_data(start_date="2023-01-01", end_date="2023-12-31", num_records=252)
-print(synthetic_data.head())
+data = generate_synthetic_data("2021-01-01", "2021-12-31", num_records=252, seed=40)
+print(data.head())
 ```
 
 ### Calculate Indicators
@@ -33,10 +32,13 @@ print(synthetic_data.head())
 ``` python
 from traders_copilot_mzza_25 import calculate_sma, calculate_rsi
 
-# Calculate SMA and RSI
-synthetic_data = calculate_sma(synthetic_data, window=50)
-synthetic_data = calculate_rsi(synthetic_data, window=14)
-print(synthetic_data.head())
+data = pd.DataFrame({'Close': [100, 102, 104, 106, 108]})
+result = calculate_sma(data, window=3)
+print(result['SMA_3'])
+
+data = pd.DataFrame({'Close': [100, 102, 104, 106, 108]})
+result = calculate_rsi(data, window=3)
+print(result['RSI'])
 ```
 
 ### Generate Trading Signals
@@ -44,9 +46,13 @@ print(synthetic_data.head())
 ``` python
 from traders_copilot_mzza_25 import generate_signals
 
-# Generate buy/sell signals
-signals = generate_signals(synthetic_data)
-print(signals[['SMA_50', 'SMA_200', 'RSI', 'Signal']].head())
+data = pd.DataFrame({
+'SMA_50': [100, 102, 104, 106, 108],
+'SMA_200': [98, 99, 100, 101, 102],
+'RSI': [25, 30, 35, 40, 45]
+})
+result = generate_signals(data)
+print(result['Signal'])
 ```
 
 ### Visualize Signals
@@ -54,8 +60,9 @@ print(signals[['SMA_50', 'SMA_200', 'RSI', 'Signal']].head())
 ``` python
 from traders_copilot_mzza_25 import plot_signals
 
-# Plot signals
-fig = plot_signals(signals, price_col="Close", time_col="Date")
+data = pd.DataFrame({"Date": ["2023-01-01", "2023-01-02", "2023-01-03"], 
+                     "Close": [100, 102, 104]})
+fig = plot_signals(data)
 fig.show()
 ```
 
