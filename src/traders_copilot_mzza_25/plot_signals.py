@@ -40,8 +40,7 @@ def generate_plot(price, time):
     return fig
 
 def plot_signals(data, price_col="Close", time_col="Date"):
-    """
-    Plot a time series depicting the price at specific timestamps from a DataFrame.
+    """Plot a time series depicting the price at specific timestamps from a DataFrame.
     
     Parameters
     ----------
@@ -68,7 +67,7 @@ def plot_signals(data, price_col="Close", time_col="Date"):
     Examples
     --------
     >>> data = pd.DataFrame({"Date": ["2023-01-01", "2023-01-02", "2023-01-03"], 
-    ...                      "Close": [100, 102, 104]})
+    >>>                      "Close": [100, 102, 104]})
     >>> fig = plot_signals(data)
     >>> fig.show()
     """
@@ -76,4 +75,5 @@ def plot_signals(data, price_col="Close", time_col="Date"):
     validate_lengths(data, price_col, time_col)
     validate_non_empty(data, price_col, time_col)
     validate_dates(data, time_col)
+    
     return generate_plot(data[price_col], data[time_col])
