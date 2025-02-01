@@ -17,6 +17,7 @@ def generate_synthetic_data(start_date, end_date, num_records=252, seed=40):
     -------
         pd.DataFrame: A DataFrame containing the generated stock data with 'Date', 'Open', 'High', 'Low', 
         'Close', 'Adj Close', and 'Volume' columns.
+        
     """
     
     try:
@@ -56,3 +57,4 @@ def generate_synthetic_data(start_date, end_date, num_records=252, seed=40):
     stock_data.set_index("Date", inplace=True)
     
     return stock_data
+
