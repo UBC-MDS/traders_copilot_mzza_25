@@ -1,7 +1,7 @@
 # traders_copilot_mzza_25
 
-[![Documentation Status](https://readthedocs.org/projects/traders-copilot-mzza-25/badge/?version=latest)](https://traders-copilot-mzza-25.readthedocs.io/en/latest/?badge=latest)
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Documentation Status](https://readthedocs.org/projects/traders-copilot-mzza-25/badge/?version=latest)](https://traders-copilot-mzza-25.readthedocs.io/en/latest/?badge=latest)
 ![Python Versions](https://img.shields.io/pypi/pyversions/traders-copilot-mzza-25)
 ![CI-CD](https://github.com/UBC-MDS/traders-copilot-mzza-25/actions/workflows/ci-cd.yml/badge.svg)
 [![codecov](https://codecov.io/github/UBC-MDS/traders-copilot-mzza-25/graph/badge.svg?token=bVVFkdjNRG)](https://codecov.io/github/UBC-MDS/traders-copilot-mzza-25)
