@@ -10,9 +10,30 @@ Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi
 
 ## Installation
 
-1.  Clone the Repository git clone <https://github.com/UBC-MDS/traders_copilot_mzza_25.git> cd traders_copilot_mzza_25
+1.  Clone the Repository
 
-2.  Install the Package: \$ pip install traders_copilot_mzza_25
+    ``` sh
+    git clone <https://github.com/UBC-MDS/traders_copilot_mzza_25.git> 
+    cd traders_copilot_mzza_25
+    ```
+
+2.  Install the Package:
+
+    ``` sh
+    pip install traders_copilot_mzza_25
+    ```
+
+3.  Set Up the Environment and Install Dependencies
+
+    ``` shell
+    poetry install
+    ```
+
+4.  Run Tests
+
+    ``` sh
+    poetry run pytest tests/ --cov=src
+    ```
 
 ## Features
 
