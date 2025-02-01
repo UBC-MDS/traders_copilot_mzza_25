@@ -17,6 +17,17 @@ def generate_synthetic_data(start_date, end_date, num_records=252, seed=40):
     -------
         pd.DataFrame: A DataFrame containing the generated stock data with 'Date', 'Open', 'High', 'Low', 
         'Close', 'Adj Close', and 'Volume' columns.
+    # Example 
+if __name__ == "__main__":
+    start_date = "2023-01-01"
+    end_date = "2023-12-31"
+    num_records = 252
+    
+    # Generate the data
+    synthetic_data = generate_synthetic_data(start_date, end_date, num_records)
+    print("Synthetic Stock Data:")
+    print(synthetic_data.head())
+        
     """
     
     try:
@@ -56,3 +67,4 @@ def generate_synthetic_data(start_date, end_date, num_records=252, seed=40):
     stock_data.set_index("Date", inplace=True)
     
     return stock_data
+
