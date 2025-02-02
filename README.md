@@ -52,7 +52,7 @@ Verify the installation and functionality by running the tests:
 
 ```bash
 poetry run pytest tests/ --cov=src
-    ```
+```
 
 ## Features
 
