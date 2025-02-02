@@ -19,6 +19,7 @@ sphinx_rtd_theme = ">=1.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
+pytest-cov = "^2.12"
 
 [tool.semantic_release]
 version_toml = [
