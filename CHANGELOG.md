@@ -1,9 +1,20 @@
 # CHANGELOG
 
 
+## v0.1.1 (2025-02-03)
+
+### Bug Fixes
+
+- Updated README addressing virtual enironment issues with importing functions #66
+  ([`8019dad`](https://github.com/UBC-MDS/traders_copilot_mzza_25/commit/8019dad5810c607c48b521dd681a0e4c4ff99e4e))
+
+
 ## v0.1.0 (2025-02-02)
 
 ### Bug Fixes
+
+- Addressed issue by MavisWong295
+  ([`4458aef`](https://github.com/UBC-MDS/traders_copilot_mzza_25/commit/4458aeff3224cf55f0ca1cb7a8694692877323ff))
 
 - Append path for test generate data
   ([`672ee1b`](https://github.com/UBC-MDS/traders_copilot_mzza_25/commit/672ee1bb4bfb919ff599be7454a53fe59d6b5294))

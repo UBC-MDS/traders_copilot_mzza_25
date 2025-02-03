@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "traders_copilot_mzza_25"
-version = "0.1.0"
+version = "0.1.1"
 description = "The package is designed to signal traders, and thus helping with streamlining investment decision-making and optimizing trading strategies."
 authors = ["Mingyang Zhang, Zanan Pech, Ziyuan Zhao and Abeba Nigussie Turi"]
 license = "MIT"
