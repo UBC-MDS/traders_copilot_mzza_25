@@ -4,7 +4,7 @@
 [![Documentation Status](https://readthedocs.org/projects/traders-copilot-mzza-25/badge/?version=latest)](https://traders-copilot-mzza-25.readthedocs.io/en/latest/?badge=latest)
 ![Python Versions](https://img.shields.io/pypi/pyversions/traders-copilot-mzza-25)
 ![CI-CD](https://github.com/UBC-MDS/traders-copilot-mzza-25/actions/workflows/ci-cd.yml/badge.svg)
-[![codecov](https://codecov.io/github/UBC-MDS/traders-copilot-mzza-25/graph/badge.svg?token=bVVFkdjNRG)](https://codecov.io/github/UBC-MDS/traders-copilot-mzza-25)
+[![codecov](https://codecov.io/github/UBC-MDS/traders_copilot_mzza_25/branch/main/graph/badge.svg)](https://app.codecov.io/github/UBC-MDS/traders_copilot_mzza_25)
 
 This package is a streamlined application designed to assist in investment decision-making. It provides trading signals for stock markets by leveraging two key technical indicators: Simple Moving Average (SMA), which smooths price data to identify trends, and Relative Strength Index (RSI), which measures the speed and magnitude of price movements to determine overbought or oversold conditions.
 
