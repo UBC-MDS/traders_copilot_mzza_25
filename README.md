@@ -1,6 +1,10 @@
 # traders_copilot_mzza_25
 
-[![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![Documentation Status](https://readthedocs.org/projects/traders-copilot-mzza-25/badge/?version=latest)](https://traders-copilot-mzza-25.readthedocs.io/en/latest/?badge=latest) ![Python Versions](https://img.shields.io/pypi/pyversions/traders-copilot-mzza-25) ![CI-CD](https://github.com/UBC-MDS/traders-copilot-mzza-25/actions/workflows/ci-cd.yml/badge.svg) [![codecov](https://codecov.io/github/UBC-MDS/traders_copilot_mzza_25/branch/main/graph/badge.svg)](https://app.codecov.io/github/UBC-MDS/traders_copilot_mzza_25)
+[![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Documentation Status](https://readthedocs.org/projects/traders-copilot-mzza-25/badge/?version=latest)](https://traders-copilot-mzza-25.readthedocs.io/en/latest/?badge=latest)
+![Python Versions](https://img.shields.io/pypi/pyversions/traders-copilot-mzza-25)
+![CI-CD](https://github.com/UBC-MDS/traders-copilot-mzza-25/actions/workflows/ci-cd.yml/badge.svg)
+[![codecov](https://codecov.io/github/UBC-MDS/traders-copilot-mzza-25/graph/badge.svg?token=bVVFkdjNRG)](https://codecov.io/github/UBC-MDS/traders-copilot-mzza-25)
 
 This package is a streamlined application designed to assist in investment decision-making. It provides trading signals for stock markets by leveraging two key technical indicators: Simple Moving Average (SMA), which smooths price data to identify trends, and Relative Strength Index (RSI), which measures the speed and magnitude of price movements to determine overbought or oversold conditions.
 
@@ -12,30 +16,43 @@ Mingyang Zhang @MasonZhang-MZ, Zanan Pech @zananpech, Ziyuan Zhao @cherylziunzha
 
 ## Installation
 
-1.  Clone the Repository
+### 1. Clone the Repository
 
-    ``` sh
-    git clone https://github.com/UBC-MDS/traders_copilot_mzza_25.git
-    cd traders_copilot_mzza_25
-    ```
+```bash
+git clone https://github.com/UBC-MDS/traders_copilot_mzza_25.git
+cd traders_copilot_mzza_25
+```
 
-2.  Install the Package:
+### 2. Set Up the Virtual Environment
 
-    ``` sh
-    pip install traders_copilot_mzza_25
-    ```
+To ensure a clean environment, create a virtual environment using `conda`:
 
-3.  Set Up the Environment and Install Dependencies
+```bash
+conda create --name traders_copilot_mzza_25 python=3.11 -y
+conda activate traders_copilot_mzza_25
+```
 
-    ``` shell
-    poetry install
-    ```
+### 3. Install Dependencies Using Poetry
 
-4.  Run Tests
+Ensure that Poetry is installed. If not, install it via `pip`:
 
-    ``` sh
-    poetry run pytest tests/ --cov=src
-    ```
+```bash
+pip install poetry
+```
+
+Install the package and its dependencies:
+
+```bash
+poetry install
+```
+
+### 4. Run Tests
+
+Verify the installation and functionality by running the tests:
+
+```bash
+poetry run pytest tests/ --cov=src
+```
 
 ## Features
 
@@ -116,7 +133,7 @@ Interested in contributing? Check out the contributing guidelines. Please note t
 
 ## License
 
-`traders_copilot_mzza_25` was created by Mingyang Zhang @MasonZhang-MZ, Zanan Pech @zananpech, Ziyuan Zhao @cherylziunzhao and Abeba Nigussie Turi @abbyturi. It is licensed under the terms of the MIT license. [`LICENSE`](https://github.com/UBC-MDS/traders_copilot_mzza_25/blob/main/LICENSE)
+`traders_copilot_mzza_25` was created by Mingyang Zhang @MasonZhang-MZ, Zanan Pech @zananpech, Ziyuan Zhao @cherylziunzhao and Abeba Nigussie Turi @abbyturi. It is licensed under the terms of the MIT license.
 
 ## Credits
 
