@@ -18,26 +18,26 @@ Mingyang Zhang @MasonZhang-MZ, Zanan Pech @zananpech, Ziyuan Zhao @cherylziunzha
 
 1.  Clone the Repository
 
-    ``` sh
+    ```sh
     git clone https://github.com/UBC-MDS/traders_copilot_mzza_25.git
     cd traders_copilot_mzza_25
     ```
 
 2.  Install the Package:
 
-    ``` sh
+    ```sh
     pip install traders_copilot_mzza_25
     ```
 
 3.  Set Up the Environment and Install Dependencies
 
-    ``` shell
+    ```shell
     poetry install
     ```
 
 4.  Run Tests
 
-    ``` sh
+    ```sh
     poetry run pytest tests/ --cov=src
     ```
 
@@ -45,18 +45,18 @@ Mingyang Zhang @MasonZhang-MZ, Zanan Pech @zananpech, Ziyuan Zhao @cherylziunzha
 
 traders_copilot_mzza_25 package is a specialized tool for traders and investors fitting into a Python ecosystem of a similar vein. The package augments the existing trading and financial analysis packages like TA-Lib, Backtrader, and PyAlgoTrade by combining trading signal generation, strategy optimization, and built-in visualization tools into one place for a comprehensive trading workflow.
 
--   **generate_synthetic_data:** Simulates stock market data for analysis and testing.
--   **Technical Indicators:** Implements:
-    -   Simple Moving Average (SMA): Smooths price data to identify trends.
-    -   Relative Strength Index (RSI): Measures the speed and magnitude of price movements to assess overbought/oversold conditions.
--   **generate_signals:** Identifies buy/sell signals based on SMA and RSI thresholds:
-    -   **Buy Signal:**
-        -   SMA_50 \> SMA_200 (short-term trend is stronger)
-        -   RSI \< 30 (stock is oversold)
-    -   **Sell Signal:**
-        -   SMA_50 \< SMA_200 (long-term trend is stronger)
-        -   RSI \> 70 (stock is overbought)
--   **plot_signals:** Visualizes stock data with buy/sell signals marked on the chart.
+- **generate_synthetic_data:** Simulates stock market data for analysis and testing.
+- **Technical Indicators:** Implements:
+  - Simple Moving Average (SMA): Smooths price data to identify trends.
+  - Relative Strength Index (RSI): Measures the speed and magnitude of price movements to assess overbought/oversold conditions.
+- **generate_signals:** Identifies buy/sell signals based on SMA and RSI thresholds:
+  - **Buy Signal:**
+    - SMA_50 \> SMA_200 (short-term trend is stronger)
+    - RSI \< 30 (stock is oversold)
+  - **Sell Signal:**
+    - SMA_50 \< SMA_200 (long-term trend is stronger)
+    - RSI \> 70 (stock is overbought)
+- **plot_signals:** Visualizes stock data with buy/sell signals marked on the chart.
 
 ## Usage
 
@@ -64,7 +64,7 @@ traders_copilot_mzza_25 package is a specialized tool for traders and investors 
 
 ### Simulate Market Data
 
-``` python
+```python
 from traders_copilot_mzza_25 import generate_synthetic_data
 
 data = generate_synthetic_data("2021-01-01", "2021-12-31", num_records=252, seed=40)
@@ -73,7 +73,7 @@ print(data.head())
 
 ### Calculate Indicators
 
-``` python
+```python
 from traders_copilot_mzza_25 import calculate_sma, calculate_rsi
 
 data = pd.DataFrame({'Close': [100, 102, 104, 106, 108]})
@@ -87,7 +87,7 @@ print(result['RSI'])
 
 ### Generate Trading Signals
 
-``` python
+```python
 from traders_copilot_mzza_25 import generate_signals
 
 data = pd.DataFrame({
@@ -101,10 +101,10 @@ print(result['Signal'])
 
 ### Visualize Signals
 
-``` python
+```python
 from traders_copilot_mzza_25 import plot_signals
 
-data = pd.DataFrame({"Date": ["2023-01-01", "2023-01-02", "2023-01-03"], 
+data = pd.DataFrame({"Date": ["2023-01-01", "2023-01-02", "2023-01-03"],
                      "Close": [100, 102, 104]})
 fig = plot_signals(data)
 fig.show()
@@ -117,10 +117,12 @@ The traders_copilot_mzza_25 package positions itself within the Python ecosystem
 ## Contributing
 
 Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+[`CONTRIBUTING.md`](https://github.com/UBC-MDS/traders_copilot_mzza_25/blob/main/CONTRIBUTING.md)
 
 ## License
 
 `traders_copilot_mzza_25` was created by Mingyang Zhang @MasonZhang-MZ, Zanan Pech @zananpech, Ziyuan Zhao @cherylziunzhao and Abeba Nigussie Turi @abbyturi. It is licensed under the terms of the MIT license.
+[`LICENSE`](https://github.com/UBC-MDS/traders_copilot_mzza_25/blob/main/LICENSE)
 
 ## Credits
 
